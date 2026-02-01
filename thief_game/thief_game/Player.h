@@ -46,7 +46,7 @@ private:
 	AssetManager& m_assetManager;
 
 	// player
-	sf::RectangleShape m_temp_player;
+	sf::RectangleShape m_shape;
 
 	// movement
 	sf::Vector2f m_Position;
