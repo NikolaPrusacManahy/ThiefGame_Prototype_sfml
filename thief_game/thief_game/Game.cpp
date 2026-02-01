@@ -13,7 +13,8 @@ Game::Game()
         sf::VideoMode(sf::Vector2u{ WINDOW_W, WINDOW_H }),
         "SFML Game",
         sf::State::Windowed
-    ) , m_title(m_font)
+    ) , m_title(m_font),
+        m_player(m_assets)
     {
     m_window.setFramerateLimit(60);
 
@@ -105,16 +106,20 @@ void Game::handleEvent3(const sf::Event& e)
 
 void Game::update(sf::Time dt)
 {
-    float dt_seconds = dt.asSeconds();
+    float seconds = dt.asSeconds();
     
+    m_player.handleInput();
+    m_player.update(seconds);
+    m_detectionUI.update(m_player.getDetectionGauge());
 }
 
 void Game::render()
 {
     m_window.clear(sf::Color::White);
-    m_window.draw(m_title);
-    if (m_logoSprite)
-        m_window.draw(*m_logoSprite);
+    
+    m_player.render(m_window);
+    m_detectionUI.render(m_window);
+
     m_window.display();
 }
 
@@ -138,12 +143,5 @@ void Game::setupFontAndText()
 
 void Game::setupSprite()
 {
-    if (!m_logoTexture.loadFromFile("ASSETS/IMAGES/SFML-LOGO.png"))
-    {
-        std::cout << "Error: could not load image\n";
-        return;
-    }
-
-    m_logoSprite.emplace(m_logoTexture);
-    m_logoSprite->setPosition({ 300.f, 180.f });
+    // leave empty
 }

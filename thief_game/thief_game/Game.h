@@ -1,6 +1,9 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "AssetManager.h"
+#include "Player.h"
+#include "DetectionUI.h"
 
 class Game
 {
@@ -26,10 +29,14 @@ private:
     sf::RenderWindow m_window;
     bool m_exitGame{ false };
 
+    // core system
+    AssetManager m_assets;
+    Player m_player;
+    DetectionUI m_detectionUI;
+
     // Demo content (keep for sanity checks)
     sf::Font m_font;
     sf::Text m_title;
-
     sf::Texture m_logoTexture;
     std::optional<sf::Sprite> m_logoSprite;
 };

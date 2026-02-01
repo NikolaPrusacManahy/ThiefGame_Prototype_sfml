@@ -1,2 +1,8 @@
 ﻿  AssetManager.cpp
+  Game.cpp
+  main.cpp
+  Player.cpp
+C:\Users\Nikola\Desktop\project\thief_game\thief_game\Player.cpp(45,17): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nikola\Desktop\project\thief_game\thief_game\Player.cpp(47,18): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   thief_game.vcxproj -> C:\Users\Nikola\Desktop\project\thief_game\Debug\thief_game.exe
