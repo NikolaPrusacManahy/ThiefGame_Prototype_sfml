@@ -103,9 +103,10 @@ void Game::handleEvent3(const sf::Event& e)
 }
 #endif
 
-void Game::update(sf::Time)
+void Game::update(sf::Time dt)
 {
-    // game logic goes here (movement, collisions, AI, etc.)
+    float dt_seconds = dt.asSeconds();
+    
 }
 
 void Game::render()
