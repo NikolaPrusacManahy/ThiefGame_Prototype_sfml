@@ -14,10 +14,10 @@ public:
 	void load(std::string const& t_id, std::string const& t_filename)
 	{
 		auto resource = std::make_unique<Resource>();
-		BOOL success = false;
+		bool success = false;
 
 		// check font
-		if constexpr (std::is_same_v<Resource>, sf::Font)
+		if constexpr (std::is_same_v<Resource, sf::Font>)
 		{
 			// using openfromfile
 			success = resource->openFromFile(t_filename);
@@ -34,31 +34,31 @@ public:
 		}
 
 		m_resources[t_id] = std::move(resource);
+	}
 
-		Resource const& get(std::string const& t_id) const
+	Resource const& get(std::string const& t_id) const
+	{
+		// Look up the resource by id, if it exists, the map iterator will point to it, 
+		// otherwise the map iterator will be equal to the map end iterator.
+		auto found = m_resources.find(t_id);
+		if (found == m_resources.end())
 		{
-			// Look up the resource by id, if it exists, the map iterator will point to it, 
-			// otherwise the map iterator will be equal to the map end iterator.
-			std::map<std::string, std::unique_ptr<Resource>>::const_iterator found = m_resources.find(t_id);
-			if (found == m_resources.end())
-			{
-				throw std::runtime_error("Resource ID not found: " + t_id);
-			}
-			// return the resource (1st is the name, 2nd is the resource itself)
-			return *found->second;
+			throw std::runtime_error("Resource ID not found: " + t_id);
 		}
+		// return the resource (1st is the name, 2nd is the resource itself)
+		return *found->second;
+	}
 
-		void remove(std:string const& t_id)
+	void remove(std::string const& t_id)
+	{
+		int removed = m_resources.erase(t_id);
+		if (removed == 0)
 		{
-			int remove = m_resources.earse(t_id);
-			if (removed == 0)
-			{
-				throw std::runtime_error("Could not delete Resource ID: " + t_id);
-			}
+			throw std::runtime_error("Could not delete Resource ID: " + t_id);
 		}
+	}
 
 	private:
 
 		std::map<std::string, std::unique_ptr<Resource>> m_resources;
-	}
 };
