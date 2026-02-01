@@ -1,2 +1,5 @@
 ﻿  Game.cpp
-  thief_game.vcxproj -> C:\Users\Nikola\Desktop\thief_game\Debug\thief_game.exe
+  main.cpp
+  Generating Code...
+  LINK : C:\Users\Nikola\Desktop\project\thief_game\Debug\thief_game.exe not found or not built by the last incremental link; performing full link
+  thief_game.vcxproj -> C:\Users\Nikola\Desktop\project\thief_game\Debug\thief_game.exe
