@@ -64,6 +64,8 @@ void Player::render(sf::RenderWindow& window)
 	{
 		m_shape.setFillColor(sf::Color(50, 50, 50));
 	}
+
+	window.draw(m_shape);
 }
 
 void Player::setPosition(sf::Vector2f t_position)
@@ -116,7 +118,7 @@ void Player::updateState()
 
 	if (!isMoving)
 	{
-		m_state == PlayerState::Idle;
+		m_state = PlayerState::Idle;
 	}
 	else if (sneakHeld)
 	{

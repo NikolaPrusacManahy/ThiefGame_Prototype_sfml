@@ -20,7 +20,7 @@ public:
 		m_fill.setSize({ width, 16.f });
 
 		// color gradient
-		if (detectionPercent > 40.f)
+		if (detectionPercent < 40.f)
 		{
 			m_fill.setFillColor(sf::Color::Green);
 		}
